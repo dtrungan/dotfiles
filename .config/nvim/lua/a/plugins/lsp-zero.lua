@@ -93,7 +93,7 @@ return {
             end)
 
             require("mason-lspconfig").setup({
-                ensure_installed = {},
+                ensure_installed = { "pyright" },
                 handlers = {
                     -- this first function is the "default handler"
                     -- it applies to every language server without a "custom handler"
@@ -111,4 +111,40 @@ return {
             })
         end,
     },
+
+    -- Linter and Formatter
+    {
+        "nvimtools/none-ls.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        dependencies = {
+            "williamboman/mason.nvim",
+            "jay-babu/mason-null-ls.nvim",
+        },
+        config = function()
+            local null_ls = require("null-ls")
+            local mason_null_ls = require("mason-null-ls")
+
+            -- Register your formatters and linters here
+            null_ls.setup({
+                sources = {
+                    -- Formatters
+                    -- Linters
+                },
+                -- Optional on_attach (if needed)
+                on_attach = function(client, bufnr)
+                    -- You can use lsp-zero keymaps here if you like
+                    -- local lsp_zero = require("lsp-zero")
+                    -- lsp_zero.default_keymaps({ buffer = bufnr })
+                end,
+            })
+
+            mason_null_ls.setup({
+                ensure_installed = {
+                    "ruff",
+                    "black"
+                },
+                automatic_installation = true,
+            })
+        end,
+    }
 }
