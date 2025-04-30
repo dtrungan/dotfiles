@@ -1,6 +1,6 @@
 return {
     "dense-analysis/ale",
-    enabled = false,
+    enabled = true,
     config = function()
         -- Configuration goes here.
         local g = vim.g

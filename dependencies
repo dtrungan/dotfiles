@@ -13,7 +13,7 @@ file-roller
 tmux
 neovim
 xclip
-easyeffects
-lsp-plugins
+fzf
+ripgrep
 npm
 miniconda3
