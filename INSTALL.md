@@ -333,11 +333,11 @@ Now your computer has restarted and in the login window on the tty1 console you 
 
 ### Create a user
 
-Assuming your chosen user is "user":
+Assuming your chosen user is "arch":
 
 ```
-useradd -m -g users -G wheel,storage,power,audio user
-passwd user
+useradd -m -g users -G wheel,storage,power,audio arch
+passwd arch
 ```
 
 ### Give root privileges
