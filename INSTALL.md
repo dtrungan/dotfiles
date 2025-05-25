@@ -349,7 +349,7 @@ passwd arch
 Uncomment:
 
 ```
-%wheel ALL=(ALL) ALL
+%wheel ALL=(ALL:ALL) ALL
 ```
 
 ### Login in as the new user
@@ -434,4 +434,22 @@ $ sudo pacman -S kitty nautilus dmenu firefox
 
 ```
 $ sudo reboot
+```
+
+## Ricing
+
+I use [GNU Stow](https://www.gnu.org/software/stow/) to manage my dotfiles by creating symbolic links between this repository and the appropriate locations in my home directory.
+
+To set up the dotfiles:
+
+```
+$ git clone https://github.com/dtrungan/dotfiles.git
+$ cd dotfiles
+$ stow -t ~ .bashrc .config .tmux.conf
+```
+
+As for the `etc` directory, it only contains my custom touchpad configuration. Since it targets system-wide settings, I copy it directly to the root directory:
+
+```
+$ sudo cp -r etc /
 ```
