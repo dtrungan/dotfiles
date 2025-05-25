@@ -440,11 +440,22 @@ $ sudo reboot
 
 I use [GNU Stow](https://www.gnu.org/software/stow/) to manage my dotfiles by creating symbolic links between this repository and the appropriate locations in my home directory.
 
-To set up the dotfiles:
+Clone the repo:
 
 ```
 $ git clone https://github.com/dtrungan/dotfiles.git
 $ cd dotfiles
+```
+
+Install dotfile dependencies:
+
+```
+$ yay -S --needed --noconfirm $(< dependencies)
+```
+
+Set up the dotfiles:
+
+```
 $ stow -t ~ .bashrc .config .tmux.conf
 ```
 
