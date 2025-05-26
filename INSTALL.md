@@ -456,6 +456,7 @@ $ yay -S --needed --noconfirm $(< dependencies)
 Set up the dotfiles:
 
 ```
+$ sudo pacman -S stow
 $ stow -t ~ .bashrc .config .tmux.conf
 ```
 

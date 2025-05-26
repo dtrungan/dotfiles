@@ -8,7 +8,9 @@
 - **Terminal:** kitty
 - **Editor:** : neovim
 - **Lockscreen:** i3lock w/ xautolock
-- **File Manager:** pcmanfm
+- **File Manager:** nautilus
 - **Fonts:** JetBrainsMono Nerd Font, VictorMono Nerd Font
 
 Packages I'm using: [Here](dependencies)
+
+Installation guide: [INSTALL.md](INSTALL.md)
