@@ -72,9 +72,9 @@ We'll refer to your primary disk as `sda`. Confirm it:
 We'll assume a 256GB disk with only Arch Linux installed. Create these four partitions:
 
 * `/dev/sda1` boot partition (1G).
+* `/dev/sda2` swap partition (4G).
 * `/dev/sda2` root partition (50G).
-* `/dev/sda3` home partition (100G).
-* `/dev/sda4` data partition (rest of the disk).
+* `/dev/sda3` home partition (rest of the partition).
 
 Start partitioning:
 
@@ -95,8 +95,18 @@ This will create a new empty GUID partition table (GPT). Proceed? (Y/N): y
 Command: n
 Partition number (default): ENTER
 First sector (default): ENTER
-Last sector (+size or sector): +1G
+Last sector (+size or sector): +512M
 Hex code or GUID (default 8300): ef00
+```
+
+#### Create swap partition
+
+```
+Command: n
+Partition number (default): ENTER
+First sector (default): ENTER
+Last sector (+size or sector): +4G
+Hex code or GUID (default 8300): 8200
 ```
 
 #### Create root partition (`/`)
@@ -115,18 +125,8 @@ Hex code or GUID (default 8300): 8304
 Command: n
 Partition number (default): ENTER
 First sector (default): ENTER
-Last sector (+size or sector): +100G
-Hex code or GUID (default 8300): 8302
-```
-
-#### Create data partition
-
-```
-Command: n
-Partition number (default): ENTER
-First sector (default): ENTER
 Last sector (+size or sector): ENTER
-Hex code or GUID (default 8300): ENTER
+Hex code or GUID (default 8300): 8302
 ```
 
 #### Save and exit
@@ -140,7 +140,7 @@ This will write the partition table to disk and exit. Proceed? (Y/N): y
 
 ```
 # mkfs.fat -F32 /dev/sda1
-# mkfs.ext4 /dev/sda2
+# mkswap /dev/sda2
 # mkfs.ext4 /dev/sda3
 # mkfs.ext4 /dev/sda4
 ```
@@ -148,10 +148,11 @@ This will write the partition table to disk and exit. Proceed? (Y/N): y
 #### Mount partitions
 
 ```
-# mount /dev/sda2 /mnt
+# swapon /dev/sda2
+# mount /dev/sda3 /mnt
 # mkdir -p /mnt/{boot/efi,home}
 # mount /dev/sda1 /mnt/boot/efi
-# mkdir /dev/sda3 /mnt/home
+# mount /dev/sda4 /mnt/home
 ```
 
 If you run the `lsblk` command you should see something like this:
@@ -160,9 +161,9 @@ If you run the `lsblk` command you should see something like this:
 NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
 sda      8:0    0 238.5G  0 disk
 ├─sda1   8:1    0     1G  0 part /mnt/boot/efi
-├─sda2   8:2    0    50G  0 part /mnt
-├─sda3   8:3    0   100G  0 part /mnt/home
-└─sda4   8:4    0  87.5G  0 part
+├─sda2   8:2    0     4G  0 part [SWAP]
+├─sda3   8:3    0   500G  0 part /mnt
+└─sda4   8:4    0   184G  0 part /mnt/home
 ```
 
 ## Installation
@@ -324,6 +325,7 @@ Replace "arch" with your computer name.
 ```
 # exit
 # umount -R /mnt
+# swapoff /dev/sda2
 # reboot
 ```
 
@@ -399,6 +401,11 @@ $ sudo systemctl mask systemd-rfkill.service
 $ sudo systemctl mask systemd-rfkill.socket
 ```
 
+### Enable SSD TRIM
+```
+$ sudo systemctl enable fstrim.timer
+```
+
 ## UI related step
 
 ### Install graphical environment and i3
@@ -457,8 +464,9 @@ Set up the dotfiles:
 
 ```
 $ cp .bashrc ~
-$ cp -r .config ~
 $ cp .tmux.conf ~
+$ cp .xprofile ~
+$ cp -r .config ~
 ```
 
 As for the `etc` directory, it only contains my custom touchpad configuration. Since it targets system-wide settings, I copy it directly to the root directory:
