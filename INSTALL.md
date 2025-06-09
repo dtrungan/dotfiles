@@ -355,7 +355,7 @@ Uncomment:
 ### Login in as the new user
 
 ```
-# su - thinkpad
+# su - arch
 $ xdg-user-dirs-update
 ```
 
@@ -366,8 +366,8 @@ In this guide we'll install [yay](https://github.com/Jguer/yay) as the AUR packa
 To install `yay`, run the following commands:
 
 ```
-$ mkdir Repositories
-$ cd Repositories
+$ mkdir Developer
+$ cd Developer
 $ git clone https://aur.archlinux.org/yay.git
 $ cd yay
 $ makepkg -si
@@ -393,11 +393,10 @@ $ sudo systemctl enable bluetooth
 ### Improve laptop battery consumption
 
 ```
-$ sudo pacman -S tlp tlp-rdw powertop acpi thermald
+$ sudo pacman -S tlp tlp-rdw powertop acpi 
 $ sudo systemctl enable tlp
 $ sudo systemctl mask systemd-rfkill.service
 $ sudo systemctl mask systemd-rfkill.socket
-$ sudo systemctl enable thermald
 ```
 
 ## UI related step
@@ -407,7 +406,8 @@ $ sudo systemctl enable thermald
 For this guide, we will install i3 as the window manager for our Arch Linux setup. i3 is a lightweight and highly configurable tiling window manager that allows you to manage windows efficiently using keyboard shortcuts. More about [i3 here](https://i3wm.org/).
 
 ```
-$ sudo pacman -S xorg i3
+$ sudo pacman -S xorg
+$ sudo pacman -S i3
 ```
 
 ### Install display manager
@@ -438,7 +438,7 @@ $ sudo reboot
 
 ## Ricing
 
-I use [GNU Stow](https://www.gnu.org/software/stow/) to manage my dotfiles by creating symbolic links between this repository and the appropriate locations in my home directory.
+I manage my dotfiles by manually copying or linking them from this repository to the appropriate locations in my home directory.
 
 Clone the repo:
 
@@ -450,14 +450,15 @@ $ cd dotfiles
 Install dotfile dependencies:
 
 ```
-$ yay -S --needed --noconfirm $(< dependencies)
+$ yay -S --needed --noconfirm $(< dependencies/core )
 ```
 
 Set up the dotfiles:
 
 ```
-$ sudo pacman -S stow
-$ stow -t ~ .bashrc .config .tmux.conf
+$ cp .bashrc ~
+$ cp -r .config ~
+$ cp .tmux.conf ~
 ```
 
 As for the `etc` directory, it only contains my custom touchpad configuration. Since it targets system-wide settings, I copy it directly to the root directory:

@@ -14,6 +14,7 @@ general {
 
 order += "volume master"
 order += "cpu_usage"
+order += "memory"
 order += "disk /"
 order += "battery all"
 order += "tztime local"
@@ -23,6 +24,12 @@ cpu_usage {
     max_threshold = 75
 }
 
+memory {
+    format = "%used"
+    threshold_degraded = "10%"
+    format_degraded = "MEMORY: %free"
+}
+
 volume master {
     format = "VOL %volume"
     format_muted = "VOL muted"
@@ -30,6 +37,7 @@ volume master {
     mixer = "Master"
     mixer_idx = 0
 }
+
 wireless _first_ {
     format_up = "W: (%quality at %essid) %ip"
     format_down = "W: down"

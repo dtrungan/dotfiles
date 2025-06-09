@@ -1,5 +1,0 @@
-use_conda() {
-  local env_name=$1
-  source "$(conda info --base)/etc/profile.d/conda.sh"
-  conda activate "$env_name"
-}

@@ -9,12 +9,9 @@ xautolock
 ttf-jetbrains-mono-nerd
 ttf-victor-mono-nerd
 nautilus
+nautilus-open-any-terminal
 file-roller
+eog
 tmux
-neovim
-xclip
-fzf
-ripgrep
-npm
-miniconda3
-direnv
+fcitx5-im
+fcitx5-bamboo
