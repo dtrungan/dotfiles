@@ -37,7 +37,7 @@ exec --no-startup-id nm-applet
 # Autostarts
 exec --no-startup-id flameshot
 exec_always feh --bg-scale ~/Pictures/desktop.jpg
-exec --no-startup-id firefox-developer-edition
+exec --no-startup-id firefox
 exec_always --no-startup-id picom
 exec_always --no-startup-id twmnd
 exec --no-startup-id xautolock -corners -000 -time 10 -locker "i3lock -c 000000"
