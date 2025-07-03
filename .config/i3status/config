@@ -25,9 +25,9 @@ cpu_usage {
 }
 
 memory {
-    format = "%used"
+    format = "MEM %used"
     threshold_degraded = "10%"
-    format_degraded = "MEMORY: %free"
+    format_degraded = "MEM: %free"
 }
 
 volume master {
