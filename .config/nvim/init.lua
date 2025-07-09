@@ -43,4 +43,5 @@ vim.cmd [[
         \ "java": ["google_java_format"],
         \ }
     let g:ale_fix_on_save = 1
+    let g:ale_java_checkstyle_options = "--disable=Indentation"
 ]]
