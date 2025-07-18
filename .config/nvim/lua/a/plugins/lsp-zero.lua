@@ -151,10 +151,17 @@ return {
 
             mason_null_ls.setup({
                 ensure_installed = {
-                    "ruff",
+                    -- Python
                     "black",
+                    "ruff",
+                    -- "debugpy",
+                    -- "isort",
+          
+                    -- Java
                     "google-java-format",
-                    "checkstyle"
+                    "checkstyle",
+                    -- "java-debug-adapter",
+                    -- "vscode-java-test",
                 },
                 automatic_installation = true,
             })

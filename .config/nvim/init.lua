@@ -36,12 +36,11 @@ vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", { noremap = true, silent = true 
 vim.cmd [[
     let g:ale_linters = {
         \ "python": ["ruff"],
-        \ "java": ["checkstyle", "google_java_format"],
+        \ "java": ["checkstyle"],
         \ }
     let g:ale_fixers = {
-        \ "python": ["black", "ruff"],
+        \ "python": ["black"],
         \ "java": ["google_java_format"],
         \ }
     let g:ale_fix_on_save = 1
-    let g:ale_java_checkstyle_options = "--disable=Indentation"
 ]]
