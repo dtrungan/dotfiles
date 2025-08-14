@@ -34,13 +34,7 @@ vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", { noremap = true, silent = true 
 
 -- nvim-ale config
 vim.cmd [[
-    let g:ale_linters = {
-        \ "python": ["ruff"],
-        \ "java": ["checkstyle"],
-        \ }
-    let g:ale_fixers = {
-        \ "python": ["black"],
-        \ "java": ["google_java_format"],
-        \ }
+    let g:ale_linters = {}
+    let g:ale_fixers = {}
     let g:ale_fix_on_save = 1
 ]]

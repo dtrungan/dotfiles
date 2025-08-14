@@ -104,7 +104,7 @@ return {
             end)
 
             require("mason-lspconfig").setup({
-                ensure_installed = { "pyright", "jdtls" },
+                ensure_installed = {},
                 handlers = {
                     -- this first function is the "default handler"
                     -- it applies to every language server without a "custom handler"
@@ -150,19 +150,7 @@ return {
             })
 
             mason_null_ls.setup({
-                ensure_installed = {
-                    -- Python
-                    "black",
-                    "ruff",
-                    -- "debugpy",
-                    -- "isort",
-          
-                    -- Java
-                    "google-java-format",
-                    "checkstyle",
-                    -- "java-debug-adapter",
-                    -- "vscode-java-test",
-                },
+                ensure_installed = {},
                 automatic_installation = true,
             })
         end,
