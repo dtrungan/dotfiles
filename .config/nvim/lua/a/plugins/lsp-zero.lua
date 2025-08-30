@@ -133,7 +133,7 @@ return {
         },
         config = function()
             require("mason-null-ls").setup({
-                ensure_installed = { "stylua", "jq", "ruff", "black" },
+                ensure_installed = { "stylua", "jq", "flake8", "black", "isort" },
                 automatic_installation = true,
                 handlers = {},
             })
