@@ -22,10 +22,10 @@ TERMINAL=(
 UTILITIES=(
     "ranger"
     "dolphin"
-    "flameshot"
-    "rofi"
-    "brightnessctl"
+    "feh"
     "picom"
+    "brightnessctl"
+    "flameshot"
 )
 
 APPS=(

@@ -11,8 +11,8 @@ AUR_HELPER="yay"
 
 # AUR packages
 AUR_PACKAGES=(
-    "apple-fonts"
     "twmn-git"
+    "apple-fonts"
 )
 
 # Print functions
