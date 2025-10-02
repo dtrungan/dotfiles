@@ -41,6 +41,8 @@ FONTS=(
     "ttf-dejavu"
     "ttf-liberation"
     "ttf-opensans"
+    "ttf-jetbrains-mono-nerd"
+    "ttf-victor-mono-nerd"
 )
 
 # Function to print colored messages
