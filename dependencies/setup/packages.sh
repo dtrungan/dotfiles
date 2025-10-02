@@ -22,6 +22,10 @@ TERMINAL=(
 UTILITIES=(
     "ranger"
     "dolphin"
+    "flameshot"
+    "rofi"
+    "brightnessctl"
+    "picom"
 )
 
 APPS=(
